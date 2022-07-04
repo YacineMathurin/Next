@@ -9,6 +9,7 @@ import DefaultLayout from "../Layouts/defaultLayout";
 const Restaurant = () => {
   const router = useRouter();
   const id = router.query.id;
+  const URL = process.env.NEXT_PUBLIC_API_URL;
 
   let response: IRestaurantData = {
     loading: true,
@@ -39,6 +40,7 @@ const Restaurant = () => {
       data = response.data.restaurant.data.attributes;
     }
   }
+  console.log("ENV: ", process.env.NEXT_PUBLIC_API_URL);
 
   return (
     <DefaultLayout>
@@ -52,7 +54,7 @@ const Restaurant = () => {
             </Head>
             <div>
               <img
-                src={`http://localhost:1337${data.images.data[0].attributes.url}`}
+                src={`${URL}${data.images.data[0].attributes.url}`}
                 alt={data.name}
                 style={{ height: "500px" }}
               />
