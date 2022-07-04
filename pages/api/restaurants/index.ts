@@ -7,6 +7,15 @@ export const GET_RESTAURANTS = gql`
         id
         attributes {
           name
+          email
+          phone
+          images {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
         }
       }
     }
