@@ -14,7 +14,7 @@ const Jumbotron = () => {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={() => router.push("/cats")}
+          onClick={() => router.push("/restaurants")}
         >
           Start looking
         </button>

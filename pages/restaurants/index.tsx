@@ -1,32 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
+import React from "react";
 import Head from "next/head";
 import Card from "../../components/card/card";
-import { GET_RESTAURANTS } from "../api/restaurants";
+import { useRestaurants } from "../api/restaurants";
 import DefaultLayout from "../Layouts/defaultLayout";
 import styles from "../../styles/Home.module.css";
-
-interface IData {
-  id: string;
-  attributes: {
-    name: string;
-    email: string;
-    phone: string;
-    images: {
-      data: [
-        {
-          attributes: {
-            url: string;
-          };
-        }
-      ];
-    };
-  };
-}
+import { IRestaurantsData } from "../../interfaces/pages/restaurants";
 
 const Restaurants = () => {
-  const { loading, error, data } = useQuery(GET_RESTAURANTS);
-  console.log(loading, error, data);
+  const { loading, error, data } = useRestaurants();
 
   return (
     <DefaultLayout>
@@ -38,7 +19,7 @@ const Restaurants = () => {
       <div className={styles["cat-card-container"]}>
         {data &&
           data.restaurants.data.map(
-            ({ id, attributes }: IData, index: number) => (
+            ({ id, attributes }: IRestaurantsData, index: number) => (
               <Card
                 key={id}
                 id={id}
@@ -46,7 +27,7 @@ const Restaurants = () => {
                 phone={attributes.phone}
                 email={attributes.email}
                 image={{
-                  url: attributes.images.data[index].attributes.url,
+                  url: attributes.images.data[0].attributes.url,
                   alt: attributes.name,
                 }}
               />

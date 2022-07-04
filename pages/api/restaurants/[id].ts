@@ -1,14 +1,14 @@
 import { gql, useQuery } from "@apollo/client";
 
-export const GET_RESTAURANTS = gql`
-  query {
-    restaurants {
+export const GET_RESTAURANT = gql`
+  query GET_RESTAURANT($id: ID!) {
+    restaurant(id: $id) {
       data {
         id
         attributes {
-          name
           email
-          phone
+          name
+          description
           images {
             data {
               attributes {
@@ -21,8 +21,11 @@ export const GET_RESTAURANTS = gql`
     }
   }
 `;
-
-export const useRestaurants = () => {
-  const { loading, error, data } = useQuery(GET_RESTAURANTS);
+export const useRestaurant = (id: string) => {
+  const { loading, error, data } = useQuery(GET_RESTAURANT, {
+    variables: {
+      id,
+    },
+  });
   return { loading, error, data };
 };
