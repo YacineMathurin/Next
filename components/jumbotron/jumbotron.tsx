@@ -6,12 +6,15 @@ const Jumbotron = () => {
   return (
     <div className="jumbotron jumbotron-fluid mt-5">
       <div className="container">
-        <h1 className="display-4">Cats world</h1>
+        <h1 className="display-4" data-testid="title">
+          Visit French lands
+        </h1>
         <p className="lead">
           This is a modified jumbotron that occupies the entire horizontal space
           of its parent.
         </p>
         <button
+          data-testid="btn-next-page"
           type="button"
           className="btn btn-primary"
           onClick={() => router.push("/restaurants")}
