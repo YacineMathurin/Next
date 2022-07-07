@@ -21,7 +21,7 @@ export const GET_RESTAURANT = gql`
     }
   }
 `;
-export const useRestaurant = (id: string) => {
+export const useRestaurant = (id: string | string[] | undefined) => {
   const { loading, error, data } = useQuery(GET_RESTAURANT, {
     variables: {
       id,
