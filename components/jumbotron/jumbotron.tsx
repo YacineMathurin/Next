@@ -21,6 +21,14 @@ const Jumbotron = () => {
         >
           Start looking
         </button>
+        <button
+          data-testid="btn-next-page"
+          type="button"
+          className="btn btn-dark mx-3"
+          onClick={() => router.push(`/restaurants/add`)}
+        >
+          Add restaurant
+        </button>
       </div>
     </div>
   );
